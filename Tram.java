@@ -1,25 +1,37 @@
 import java.util.Scanner;
 
 public class Tram {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         //taking input for value n
         int n = scanner.nextInt();
         String input = "";
         int[][] tram = new int[n][2];
+        int entry = 0, exit = 0, capacity = 0;
 
         //taking input for n times
-        if(n >= 2 && n <= 1000){
-            for(int i =0; i<n; i++){
-                input = scanner.nextLine();
-                System.out.println(input);
+        if (n >= 2 && n <= 1000) {
+            for (int i = 0; i < n; i++) {
+                input = new Scanner(System.in).nextLine();
                 tram[i] = getNumbers(input);
             }
+
+            if (tram[0][0] == 0 && tram[n - 1][1] == 0) {
+                entry = tram[0][1];
+                exit = 0;
+                capacity = entry;
+                for (int j = 1; j < n-1; j++) {
+                    exit = tram[j][0];
+                    entry = (entry - exit) + tram[j][1];
+                    if (entry > capacity) {
+                        capacity = entry;
+                    }
+                }
+                if(tram[n-1][0] == entry){
+                    System.out.println(capacity);
+                }
+            }
         }
-
-        System.out.println("First exit is "+ tram[0][0]);
-        System.out.println("last in is "+ tram[n-1][1]);
-
     }
 
     public static int[] getNumbers(String input){

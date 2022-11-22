@@ -3,19 +3,18 @@ import java.util.Scanner;
 public class Tram {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        //taking input for value n
-        int n = scanner.nextInt();
         String input = "";
-        int[][] tram = new int[n][2];
         int entry = 0, exit = 0, capacity = 0;
-
-        //taking input for n times
+        int n = scanner.nextInt();
+        int[][] tram = new int[n][2];
+        //scanner.close();
+        //Scanner scanner1 = new Scanner(System.in);
         if (n >= 2 && n <= 1000) {
             for (int i = 0; i < n; i++) {
-                input = new Scanner(System.in).nextLine();
+                input = scanner.next();
                 tram[i] = getNumbers(input);
-            }
 
+            }
             if (tram[0][0] == 0 && tram[n - 1][1] == 0) {
                 entry = tram[0][1];
                 exit = 0;

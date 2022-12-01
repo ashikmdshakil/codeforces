@@ -11,9 +11,8 @@ public class Tram {
         //Scanner scanner1 = new Scanner(System.in);
         if (n >= 2 && n <= 1000) {
             for (int i = 0; i < n; i++) {
-                input = scanner.next();
+                input = new Scanner(System.in).nextLine();
                 tram[i] = getNumbers(input);
-
             }
             if (tram[0][0] == 0 && tram[n - 1][1] == 0) {
                 entry = tram[0][1];
@@ -26,9 +25,9 @@ public class Tram {
                         capacity = entry;
                     }
                 }
-                if(tram[n-1][0] == entry){
+                //if(tram[n-1][0] == entry){
                     System.out.println(capacity);
-                }
+                //}
             }
         }
     }
